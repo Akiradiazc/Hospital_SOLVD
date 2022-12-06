@@ -8,14 +8,12 @@ public class MainClass {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 
-        Hospital Hospital1 = new Hospital("Angeles", 400, 3, new ArrayList<>());
-
-        Hospital1.setN(2);
+        Hospital Hospital1 = new Hospital("Angeles", 400, new ArrayList<>());
 
         Speciality Radiology = new Speciality("Radiology", new ArrayList<>());
         Speciality Pediatry = new Speciality("Pediatry", new ArrayList<>());
 
-        ArrayList<Speciality> Especialidades = new ArrayList<>(Hospital1.getN());
+        ArrayList<Speciality> Especialidades = new ArrayList<>();
 
         ArrayList<Doctor> Radiologydoclist = new ArrayList<>();
         Radiology.setDoctorsList(Radiologydoclist);
@@ -63,26 +61,12 @@ public class MainClass {
 
         System.out.println(Hospital1);
 
-        Doctor Strange = new Doctor(
-                new Clock(07, 00),
-                new Clock(15,00),
-                66730352, "Stephen Strange",
-                1234, 'M', new Date(12,12,2021), "Neurosurgery");
-
-        System.out.println(Strange);
-
         Patient David = new Patient(
                 "David",
                 123, 'M',
                 new Date(27,02,1999));
 
-        Patient Maria = new Patient(
-                "Maria",
-                321, 'F',
-                new Date(9,03,1999));
-
         David.setDisease("Broken arm");
-        Maria.setDisease("Broken arm");
 
         System.out.println(David);
 

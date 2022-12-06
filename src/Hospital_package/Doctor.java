@@ -1,15 +1,10 @@
 package Hospital_package;
 
+import Interfaces.ExaminationTestGeneratable;
+import Interfaces.PrescriptionGeneratable;
 import java.util.Objects;
 
-interface IprescriptionGenerate {
-    void GeneratePrescription();
-}
-
-interface IExaminationTestsGenerate {
-    void GenerateExamTest();
-}
-public class Doctor extends HealthcarePerson implements IprescriptionGenerate, IExaminationTestsGenerate{
+public class Doctor extends HealthcarePerson implements PrescriptionGeneratable, ExaminationTestGeneratable{
 
     String Specialization;
 
@@ -97,4 +92,6 @@ public class Doctor extends HealthcarePerson implements IprescriptionGenerate, I
         Doctor other = (Doctor) obj;
         return Objects.equals(Specialization, other.Specialization) && getName().equals(other.getName());
     }
+
+
 }

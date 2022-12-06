@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Hospital {
     private String Hospital_name;
     private int Capacity;
-    private int n;
     private ArrayList<Speciality> Specialities;
 
-    public Hospital(String Hospital_name, int Capacity,int n, ArrayList<Speciality> Specialities) {
+    public Hospital(String Hospital_name, int Capacity, ArrayList<Speciality> Specialities) {
         this.Hospital_name = Hospital_name;
         this.Capacity= Capacity;
-        this.n = n;
         this.Specialities = Specialities;
     }
 
@@ -29,14 +27,6 @@ public class Hospital {
 
     public void setCapacity(int capacity) {
         Capacity = capacity;
-    }
-
-    public int getN() {
-        return n;
-    }
-
-    public void setN(int n) {
-        this.n = n;
     }
 
     public ArrayList<Speciality> getSpecialities() {

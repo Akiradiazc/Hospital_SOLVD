@@ -38,6 +38,22 @@ public class Clock {
         System.out.println(hr + ":" + min);
     }
     public String toString() {
-        return hr + ":" + min;
+        String ent_hour, ent_min, out_hour, out_min;
+
+        if (hr< 10) {
+            ent_hour = "0"+hr;
+        } else {
+            ent_hour = ""+hr;
+        }
+
+        if (min == 0){
+            ent_min = "00";
+        } else if (min <10) {
+            ent_min = "0" + min;
+        } else {
+            ent_min = "" + min;
+        }
+
+        return ent_hour + ":" + ent_min;
     }
 }
