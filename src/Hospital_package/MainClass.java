@@ -3,7 +3,12 @@ package Hospital_package;
 import javax.print.attribute.standard.PagesPerMinuteColor;
 import java.util.ArrayList;
 
+
+import org.apache.logging.log4j.*;
+
 public class MainClass {
+
+    private static Logger demoLogger = LogManager.getLogger(MainClass.class.getName());
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
@@ -59,7 +64,7 @@ public class MainClass {
         Hospital1.getHospital_name();
         Hospital1.getSpecialities();
 
-        System.out.println(Hospital1);
+        demoLogger.info(Hospital1);
 
         Patient David = new Patient(
                 "David",
@@ -68,7 +73,9 @@ public class MainClass {
 
         David.setDisease("Broken arm");
 
-        System.out.println(David);
+        demoLogger.info(David);
+
+        demoLogger.info("Hello");
 
     }
 

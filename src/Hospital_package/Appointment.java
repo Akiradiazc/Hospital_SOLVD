@@ -52,4 +52,15 @@ public class Appointment {
     public void setApp_hour(Clock app_hour) {
         this.app_hour = app_hour;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment details:" + '\n' +
+
+                "Doctor:" + doctor + '\n' +
+                ", patient=" + patient +
+                ", date=" + date +
+                ", app_hour=" + app_hour +
+                '}';
+    }
 }
