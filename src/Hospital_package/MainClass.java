@@ -4,16 +4,26 @@ import javax.print.attribute.standard.PagesPerMinuteColor;
 import java.util.ArrayList;
 
 
+import ModelExceptions.BelowZeroException;
 import org.apache.logging.log4j.*;
 
 public class MainClass {
 
-    private static Logger demoLogger = LogManager.getLogger(MainClass.class.getName());
+    private static Logger Logger = LogManager.getLogger(MainClass.class.getName());
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    public static void main(String[] args) throws BelowZeroException {
 
-        Hospital Hospital1 = new Hospital("Angeles", 400, new ArrayList<>());
+        Logger.info("Welcome to Hospital Management system");
+        Logger.info("...");
+        Logger.info("Creating a new Hospital");
+
+        //Hospital Hospital1 = new Hospital("Angeles", 400, new ArrayList<>());
+
+        Hospital Hospital1 = new Hospital();
+
+        Hospital1.setHospital_name("Angeles");
+        Hospital1.setCapacity(10);
+        Hospital1.setSpecialities(new ArrayList<>());
 
         Speciality Radiology = new Speciality("Radiology", new ArrayList<>());
         Speciality Pediatry = new Speciality("Pediatry", new ArrayList<>());
@@ -64,7 +74,7 @@ public class MainClass {
         Hospital1.getHospital_name();
         Hospital1.getSpecialities();
 
-        demoLogger.info(Hospital1);
+        Logger.info(Hospital1);
 
         Patient David = new Patient(
                 "David",
@@ -72,10 +82,6 @@ public class MainClass {
                 new Date(27,02,1999));
 
         David.setDisease("Broken arm");
-
-        demoLogger.info(David);
-
-        demoLogger.info("Hello");
 
     }
 

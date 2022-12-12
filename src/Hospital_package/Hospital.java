@@ -1,11 +1,18 @@
 package Hospital_package;
 
+import ModelExceptions.BelowZeroException;
+
 import java.util.ArrayList;
+import org.apache.logging.log4j.*;
 
 public class Hospital {
     private String Hospital_name;
     private int Capacity;
     private ArrayList<Speciality> Specialities;
+
+    private static Logger LoggerBZE_Hospital = LogManager.getLogger(MainClass.class.getName());
+
+    public Hospital(){}
 
     public Hospital(String Hospital_name, int Capacity, ArrayList<Speciality> Specialities) {
         this.Hospital_name = Hospital_name;
@@ -25,8 +32,25 @@ public class Hospital {
         return Capacity;
     }
 
-    public void setCapacity(int capacity) {
-        Capacity = capacity;
+    public void setCapacity(int capacity) throws BelowZeroException {
+        if (capacity > 0){
+            Capacity = capacity;
+        } else {
+            LoggerBZE_Hospital.error("Hospital capacity was set with a number less than zero");
+            throw new BelowZeroException("F", new RuntimeException());
+        }
+        /*
+        try{
+            if (capacity > 0){
+                Capacity = capacity;
+            } else {
+                throw new BelowZeroException();
+            }
+        } catch (BelowZeroException BZE){
+            LoggerBZE_Hospital.error(BZE.getCause());
+            LoggerBZE_Hospital.error("Hospital capacity was set with a number less than zero");
+        }
+         */
     }
 
     public ArrayList<Speciality> getSpecialities() {
@@ -39,10 +63,10 @@ public class Hospital {
 
     @Override
     public String toString() {
-        return "Hospital Data" + '\n'
+        return "\nHospital Data" + '\n'
                 +"----------------------------------\n"
                 +"Hospital name: " + Hospital_name + '\n'
-                + "Capacity: " + Capacity + '\n'
+                + "Capacity: " + Capacity + " people" + '\n'
                 + "Specialities that are handled: " + Specialities;
     }
 }
