@@ -12,7 +12,7 @@ public class Student extends HealthcarePerson{
         this.doctor = doctor;
     }
 
-    public Student(Clock Ent_hour, Clock Out_hour, int PhoneNum, String name, int ID, char gender, Date DOB, String spec, Doctor doctor) {
+    public Student(Clock Ent_hour, Clock Out_hour, String PhoneNum, String name, int ID, char gender, Date DOB, String spec, Doctor doctor) {
         super(Ent_hour, Out_hour, PhoneNum, name, ID, gender, DOB);
         this.Specialization = spec;
         this.doctor = doctor;

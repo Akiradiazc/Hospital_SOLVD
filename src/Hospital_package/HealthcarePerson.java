@@ -7,17 +7,51 @@ public abstract class HealthcarePerson extends Person{
     public Clock Ent_hour;
     public Clock Out_hour;
     ArrayList<Patient> patientList = new ArrayList<Patient>();
-    int PhoneNum;
+    String PhoneNum;
+
+    public HealthcarePerson(){}
 
     public HealthcarePerson(String name, int ID) {
         super(name, ID);
     }
 
-    public HealthcarePerson(Clock Ent_hour, Clock Out_hour, int PhoneNum, String name, int ID, char gender, Date DOB) {
+    public HealthcarePerson(Clock Ent_hour, Clock Out_hour, String PhoneNum, String name, int ID, char gender, Date DOB) {
         super(name, ID, gender, DOB);
         this.Ent_hour = Ent_hour;
         this.Out_hour = Out_hour;
         this.PhoneNum = PhoneNum;
+    }
+
+    public Clock getEnt_hour() {
+        return Ent_hour;
+    }
+
+    public void setEnt_hour(Clock ent_hour) {
+        Ent_hour = ent_hour;
+    }
+
+    public Clock getOut_hour() {
+        return Out_hour;
+    }
+
+    public void setOut_hour(Clock out_hour) {
+        Out_hour = out_hour;
+    }
+
+    public String getPhoneNum() {
+        return PhoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        PhoneNum = phoneNum;
+    }
+
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public void setPatientList(ArrayList<Patient> patientList) {
+        this.patientList = patientList;
     }
 
     public String toString() {

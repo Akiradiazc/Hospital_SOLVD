@@ -6,6 +6,8 @@ public abstract class Person {
     private char gender;
     private Date DOB;
 
+    public Person(){}
+
     public Person(String name, int ID) {
         this.name = name;
         this.ID = ID;

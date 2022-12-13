@@ -8,12 +8,14 @@ public class Doctor extends HealthcarePerson implements PrescriptionGeneratable,
 
     String Specialization;
 
+    public Doctor(){}
+
     public Doctor(String name, int ID, String Specialization) {
         super(name, ID);
         this.Specialization = Specialization;
     }
 
-    public Doctor(Clock Ent_hour, Clock Out_hour, int PhoneNum, String name, int ID, char gender, Date DOB, String spec) {
+    public Doctor(Clock Ent_hour, Clock Out_hour, String PhoneNum, String name, int ID, char gender, Date DOB, String spec) {
         super(Ent_hour, Out_hour, PhoneNum, name, ID, gender, DOB);
         this.Specialization = spec;
     }
@@ -69,7 +71,7 @@ public class Doctor extends HealthcarePerson implements PrescriptionGeneratable,
             out_min = "" + Out_hour.getMin();
         }
 
-        return "Doctor profile:\n"
+        return "\nDoctor profile:\n"
                 + "Name = " + getName() + '\n'
                 + "Specialization = " + Specialization + "\n"
                 + "Works from = " + ent_hour + ":" + ent_min + " to " + out_hour + ":" + out_min + "\n"
