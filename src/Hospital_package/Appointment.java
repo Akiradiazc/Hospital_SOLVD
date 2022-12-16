@@ -7,18 +7,13 @@ public class Appointment {
     private Date date;
     private Clock app_hour;
 
+    public Appointment(){}
+
     public Appointment(Doctor doctor, Patient patient, Date date, Clock app_hour){
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
         this.app_hour = app_hour;
-    }
-
-    public void setAppointment(){
-        System.out.println("The appointment has been set!");
-        System.out.println("Doctor: " + doctor.getName());
-        System.out.printf("Date: %d/$d/%d",date.getDay(), date.getMonth(), date.getYear());
-        System.out.println("At: " + app_hour);
     }
 
     public Doctor getDoctor() {
@@ -55,12 +50,10 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment details:" + '\n' +
-
-                "Doctor:" + doctor + '\n' +
-                ", patient=" + patient +
-                ", date=" + date +
-                ", app_hour=" + app_hour +
-                '}';
+        return "\nAppointment details:" + '\n' +
+                "Doctor: " + doctor + '\n' +
+                "Patient: " + patient + "\n"+
+                "Date: " + date + "\n" +
+                "Hour: " + app_hour;
     }
 }

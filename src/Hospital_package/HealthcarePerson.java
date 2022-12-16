@@ -6,7 +6,6 @@ import java.util.Objects;
 public abstract class HealthcarePerson extends Person{
     public Clock Ent_hour;
     public Clock Out_hour;
-    ArrayList<Patient> patientList = new ArrayList<Patient>();
     String PhoneNum;
 
     public HealthcarePerson(){}
@@ -44,14 +43,6 @@ public abstract class HealthcarePerson extends Person{
 
     public void setPhoneNum(String phoneNum) {
         PhoneNum = phoneNum;
-    }
-
-    public ArrayList<Patient> getPatientList() {
-        return patientList;
-    }
-
-    public void setPatientList(ArrayList<Patient> patientList) {
-        this.patientList = patientList;
     }
 
     public String toString() {

@@ -10,6 +10,8 @@ public class Patient extends Person {
     //private Date AdmittedDate;
     //private Double bill;
 
+    public Patient(){}
+
     public Patient(String name, int ID) {
         super(name, ID);
     }
@@ -36,12 +38,12 @@ public class Patient extends Person {
 
     @Override
     public String toString() {
-        return "Patient profile:\n"
-                + "Name = " + getName() + '\n'
-                + "Gender = " + getGender() + "\n"
-                + "ID = " + getID() + '\n'
-                + "Date of Birth = " + getDOB() + '\n'
-                + "Disease = " + getDisease() + '\n'
+        return "\nPatient profile:\n"
+                + "Name: " + getName() + '\n'
+                + "Gender: " + getGender() + "\n"
+                + "ID: " + getID() + '\n'
+                + "Date of Birth: " + getDOB() + '\n'
+                + "Disease: " + getDisease() + '\n'
                 ;
     }
 

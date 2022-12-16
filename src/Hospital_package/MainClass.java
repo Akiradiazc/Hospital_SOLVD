@@ -120,12 +120,39 @@ public class MainClass {
         Logger.info("A new Hospital has been created with the following info");
         Logger.info(Hospital1);
 
-        Patient David = new Patient(
-                "David",
-                123, 'M',
-                new Date(27,02,1999));
+        // Creating a Receptionist
 
-        David.setDisease("Broken arm");
+        Logger.info("Creating a new receptionist");
+        Receptionist receptionist1 = new Receptionist();
+        receptionist1.setName("Maria");
+        receptionist1.setID(105);
+        receptionist1.setGender('F');
+        receptionist1.setEnt_hour(new Clock(07,00));
+        receptionist1.setOut_hour(new Clock(15,00));
+        receptionist1.setPhoneNum("6671234567");
+
+        Logger.info("Receptionist has been created with the following info...");
+        Logger.info(receptionist1);
+
+        // Creating a new Patient
+
+        Logger.info("Creating a new patient");
+
+        Patient patient1 = new Patient();
+        patient1.setName("David Diaz");
+        patient1.setID(201);
+        patient1.setGender('M');
+        patient1.setDOB(new Date(27, 2, 1999));
+        patient1.setDisease("Broken arm");
+
+        Logger.info("Patient has been created with the following info...");
+        Logger.info(patient1);
+
+        // Creating an appointment for patient1
+
+        Logger.info("Creating an appointment for patient");
+
+
 
     }
 
