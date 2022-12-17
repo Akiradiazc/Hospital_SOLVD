@@ -1,17 +1,23 @@
 package Hospital_package;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 import ModelExceptions.BelowZeroException;
+import ModelExceptions.DoctorSlotOccupiedException;
 import ModelExceptions.NoMatchException;
+import ModelExceptions.PatientScheduledException;
 import org.apache.logging.log4j.*;
 
 public class MainClass {
 
     private final static Logger Logger = LogManager.getLogger(MainClass.class.getName());
 
-    public static void main(String[] args) throws BelowZeroException, NoMatchException {
+    public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException {
+
+       HashMap<Integer, Doctor> AppoDoctor = new HashMap<>();
+       HashMap<Integer, Patient>AppoPatient = new HashMap<>();
 
         // System introduction
 
@@ -26,8 +32,8 @@ public class MainClass {
         Hospital1.setHospital_name("Angeles");
         Hospital1.setCapacity(10);
 
-        Logger.info("A new hospital with name: "+Hospital1.getHospital_name() + " has been created");
-        Logger.info("A new hospital with capacity: "+Hospital1.getCapacity() + " people has been created");
+        Logger.info("A new hospital with name: " + Hospital1.getHospital_name() + " has been created");
+        Logger.info("A new hospital with capacity: " + Hospital1.getCapacity() + " people has been created");
 
         // Adding Specialities
 
@@ -56,12 +62,12 @@ public class MainClass {
         Logger.info("Creating doctors to add to the Specialities departments");
 
         Doctor doctor1 = new Doctor();
-        doctor1.setEnt_hour(new Clock(07,00));
+        doctor1.setEnt_hour(new Clock(07, 00));
         doctor1.setOut_hour(new Clock(15, 00));
         doctor1.setPhoneNum("6673035273");
         doctor1.setName("Stephen Strange");
         doctor1.setID(100);
-        doctor1.setDOB(new Date(12,12,2021));
+        doctor1.setDOB(new Date(12, 12, 2021));
         doctor1.setSpecialization("Radiology");
 
         Logger.info("New doctor was created with the following info: ");
@@ -73,7 +79,7 @@ public class MainClass {
         doctor2.setPhoneNum("6671234568");
         doctor2.setName("Schwartz");
         doctor2.setID(101);
-        doctor2.setDOB(new Date(12,12,2021));
+        doctor2.setDOB(new Date(12, 12, 2021));
         doctor2.setSpecialization("Radiology");
 
         Logger.info("New doctor was created with the following info: ");
@@ -85,7 +91,7 @@ public class MainClass {
         doctor3.setPhoneNum("6671234561");
         doctor3.setName("Schmidt");
         doctor3.setID(102);
-        doctor3.setDOB(new Date(4,12,2021));
+        doctor3.setDOB(new Date(4, 12, 2021));
         doctor3.setSpecialization("Pediatrics");
 
         Logger.info("New doctor was created with the following info: ");
@@ -97,7 +103,7 @@ public class MainClass {
         doctor4.setPhoneNum("6671234562");
         doctor4.setName("Messi");
         doctor4.setID(103);
-        doctor4.setDOB(new Date(4,12,1986));
+        doctor4.setDOB(new Date(4, 12, 1986));
         doctor4.setSpecialization("Pediatrics");
 
         Logger.info("New doctor was created with the following info: ");
@@ -107,11 +113,11 @@ public class MainClass {
 
         Logger.info(Radiology.getName());
 
-        Radiology.setDoctorInList(doctor1, Radiology,RadiologyDrList);
-        Radiology.setDoctorInList(doctor2, Radiology,RadiologyDrList);
+        Radiology.setDoctorInList(doctor1, Radiology, RadiologyDrList);
+        Radiology.setDoctorInList(doctor2, Radiology, RadiologyDrList);
         //Radiology.setDoctorInList(doctor4, Radiology, RadiologyDrList);
-        Pediatrics.setDoctorInList(doctor3, Pediatrics,PediatricsDrList);
-        Pediatrics.setDoctorInList(doctor4, Pediatrics,PediatricsDrList);
+        Pediatrics.setDoctorInList(doctor3, Pediatrics, PediatricsDrList);
+        Pediatrics.setDoctorInList(doctor4, Pediatrics, PediatricsDrList);
 
         Logger.info("Doctors where added to specialities lists");
 
@@ -120,19 +126,7 @@ public class MainClass {
         Logger.info("A new Hospital has been created with the following info");
         Logger.info(Hospital1);
 
-        // Creating a Receptionist
-
-        Logger.info("Creating a new receptionist");
-        Receptionist receptionist1 = new Receptionist();
-        receptionist1.setName("Maria");
-        receptionist1.setID(105);
-        receptionist1.setGender('F');
-        receptionist1.setEnt_hour(new Clock(07,00));
-        receptionist1.setOut_hour(new Clock(15,00));
-        receptionist1.setPhoneNum("6671234567");
-
-        Logger.info("Receptionist has been created with the following info...");
-        Logger.info(receptionist1);
+        Logger.info("\n");
 
         // Creating a new Patient
 
@@ -148,12 +142,52 @@ public class MainClass {
         Logger.info("Patient has been created with the following info...");
         Logger.info(patient1);
 
+        // Creating a new Patient 2
+
+        Logger.info("Creating a new patient");
+
+        Patient patient2 = new Patient();
+        patient2.setName("Stephen Curry");
+        patient2.setID(202);
+        patient2.setGender('M');
+        patient2.setDOB(new Date(14, 3, 1988));
+        patient2.setDisease("Broken shoulder");
+
+        Logger.info("Patient has been created with the following info...");
+        Logger.info(patient2);
+
         // Creating an appointment for patient1
 
         Logger.info("Creating an appointment for patient");
 
+        Appointment appointment1 = new Appointment();
+        appointment1.setDate(new Date(10, 10, 2010));
+        appointment1.setApp_hour(new Clock(13, 30));
+        appointment1.setPatient(patient1);
+        appointment1.setDoctor(doctor1);
 
+        // Adding the appointment of patient1 to hospital's
 
+        Hospital1.setAppointmentInDocsList(AppoDoctor, appointment1);
+        Hospital1.setAppointmentPatientsList(AppoPatient, appointment1,patient1, doctor1);
+
+        // Creating an appointment for patient2
+
+        Logger.info("Creating an appointment for patient");
+
+        Appointment appointment2 = new Appointment();
+        appointment2.setDate(new Date(10, 10, 2010));
+        appointment2.setApp_hour(new Clock(13, 30));
+        appointment2.setPatient(patient2);
+        appointment2.setDoctor(doctor1);
+
+        // Adding the appointment of patient2 to hospital's
+
+        Hospital1.setAppointmentInDocsList(AppoDoctor, appointment2);
+        Hospital1.setAppointmentPatientsList(AppoPatient, appointment2,patient2, doctor1);
+
+        Logger.info(appointment2.hashCode_wDoc());
+        Logger.info(appointment1.hashCode_wDoc());
     }
 
 }

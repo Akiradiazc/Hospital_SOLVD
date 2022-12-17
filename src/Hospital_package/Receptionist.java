@@ -1,6 +1,11 @@
 package Hospital_package;
 
+import javax.print.Doc;
+import java.util.HashMap;
+
 public class Receptionist extends HealthcarePerson {
+
+
 
     public Receptionist() {
     }
@@ -17,6 +22,10 @@ public class Receptionist extends HealthcarePerson {
 
     public Appointment GenerateAppointment(Doctor doctor, Patient patient, Date date, Clock hour){
         Appointment appointment = new Appointment();
+        appointment.setDoctor(doctor);
+        appointment.setPatient(patient);
+        appointment.setDate(date);
+        appointment.setApp_hour(hour);
 
         return appointment;
     }

@@ -1,5 +1,7 @@
 package Hospital_package;
 
+import java.util.Objects;
+
 public class Appointment {
 
     private Doctor doctor;
@@ -51,9 +53,17 @@ public class Appointment {
     @Override
     public String toString() {
         return "\nAppointment details:" + '\n' +
-                "Doctor: " + doctor + '\n' +
-                "Patient: " + patient + "\n"+
-                "Date: " + date + "\n" +
-                "Hour: " + app_hour;
+                "Doctor: " + doctor.getName() + '\n' +
+                "Patient: " + patient.getName() + "\n"+
+                "Date of the appointment: " + date + "\n" +
+                "Hour of the: " + app_hour;
     }
+    public int hashCode_wDoc(){
+        return Objects.hash(date, app_hour, doctor);
+    }
+
+    public int hashCode_wPat(){
+        return Objects.hash(date, app_hour, patient);
+    }
+
 }
