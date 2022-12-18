@@ -66,4 +66,31 @@ public class Appointment {
         return Objects.hash(date, app_hour, patient);
     }
 
+    /*
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Appointment other = (Appointment) obj;
+        return this.getDate().equals(other.getDate());
+    }
+*/
+    @Override
+    public boolean equals(Object obj){
+        Appointment a = (Appointment) obj;
+        if (this.getDate() != a.getDate())
+            return false;
+        if (this.getApp_hour() != a.getApp_hour())
+            return false;
+        if (this.getPatient() != a.getPatient())
+            return false;
+        if (this.getDoctor() != a.getDoctor())
+            return false;
+        return true;
+    }
+
 }

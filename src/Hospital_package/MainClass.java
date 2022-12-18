@@ -35,10 +35,13 @@ public class MainClass {
         Logger.info("A new hospital with name: " + Hospital1.getHospital_name() + " has been created");
         Logger.info("A new hospital with capacity: " + Hospital1.getCapacity() + " people has been created");
 
-        // Adding Specialities
+        // Adding Specialities & appointments
 
         ArrayList<Speciality> SpecialitiesList = new ArrayList<>();
         Hospital1.setSpecialities(SpecialitiesList);
+
+        ArrayList<Appointment> Appointments = new ArrayList<>();
+        Hospital1.setAppointments(Appointments);
 
         Logger.info("Adding Specialities to Hospital");
 
@@ -156,6 +159,10 @@ public class MainClass {
         Logger.info("Patient has been created with the following info...");
         Logger.info(patient2);
 
+        // Setting the appointments hashmaps
+        Hospital1.setAppoDoctor(AppoDoctor);
+        Hospital1.setAppoPatient(AppoPatient);
+
         // Creating an appointment for patient1
 
         Logger.info("Creating an appointment for patient");
@@ -168,8 +175,9 @@ public class MainClass {
 
         // Adding the appointment of patient1 to hospital's
 
-        Hospital1.setAppointmentInDocsList(AppoDoctor, appointment1);
-        Hospital1.setAppointmentPatientsList(AppoPatient, appointment1,patient1, doctor1);
+        Hospital1.setAppointmentInDocsList(Appointments, appointment1);
+        //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment1);
+        //Hospital1.setAppointmentPatientsList(AppoPatient, appointment1,patient1, doctor1);
 
         // Creating an appointment for patient2
 
@@ -183,11 +191,14 @@ public class MainClass {
 
         // Adding the appointment of patient2 to hospital's
 
-        Hospital1.setAppointmentInDocsList(AppoDoctor, appointment2);
-        Hospital1.setAppointmentPatientsList(AppoPatient, appointment2,patient2, doctor1);
+        Hospital1.setAppointmentInDocsList(Appointments, appointment2);
+
+        //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment2);
+        //Hospital1.setAppointmentPatientsList(AppoPatient, appointment2,patient2, doctor1);
 
         Logger.info(appointment2.hashCode_wDoc());
         Logger.info(appointment1.hashCode_wDoc());
+        Logger.info(Hospital1.getAppointments());
     }
 
 }

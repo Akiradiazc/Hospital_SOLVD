@@ -2,6 +2,7 @@ package Hospital_package;
 
 import ModelExceptions.BelowZeroException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ public class Hospital {
     private String Hospital_name;
     private int Capacity;
     private boolean Appointment_dr_available = false;
+    private ArrayList<Appointment> Appointments;
     private ArrayList<Speciality> Specialities;
 
     private HashMap<Integer, Doctor> AppoDoctor = new HashMap<>();
@@ -23,10 +25,11 @@ public class Hospital {
 
     public Hospital(){}
 
-    public Hospital(String Hospital_name, int Capacity, ArrayList<Speciality> Specialities) {
+    public Hospital(String Hospital_name, int Capacity, ArrayList<Speciality> Specialities, ArrayList<Appointment> Appointments) {
         this.Hospital_name = Hospital_name;
         this.Capacity= Capacity;
         this.Specialities = Specialities;
+        this.Appointments = Appointments;
     }
 
     public String getHospital_name() {
@@ -69,6 +72,43 @@ public class Hospital {
     public void setSpecialities(ArrayList<Speciality> specialities) {
         Specialities = specialities;
     }
+
+    public HashMap<Integer, Doctor> getAppoDoctor() {
+        return AppoDoctor;
+    }
+
+    public void setAppoDoctor(HashMap<Integer, Doctor> appoDoctor) {
+        AppoDoctor = appoDoctor;
+    }
+
+    public HashMap<Integer, Patient> getAppoPatient() {
+        return AppoPatient;
+    }
+
+    public void setAppoPatient(HashMap<Integer, Patient> appoPatient) {
+        AppoPatient = appoPatient;
+    }
+
+    public ArrayList<Appointment> getAppointments() {
+        return Appointments;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        Appointments = appointments;
+    }
+
+    public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException {
+        for(Appointment item: appointments){
+            if(appointment.equals(item)){
+                LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
+                throw new DoctorSlotOccupiedException("F");
+            } else {
+                appointments.add(appointment);
+            }
+        }
+    }
+
+/*
     public void setAppointmentInDocsList(HashMap<Integer, Doctor> AppoDoctor, Appointment appointment) throws DoctorSlotOccupiedException {
         if ((AppoDoctor.containsValue(appointment.hashCode_wDoc())) ){
             LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
@@ -86,7 +126,7 @@ public class Hospital {
             AppoPatient.put(appointment.hashCode_wPat(), patient);
         }
     }
-
+*/
     @Override
     public String toString() {
         return "\nHospital Data" + '\n'
