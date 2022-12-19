@@ -82,15 +82,13 @@ public class Appointment {
     @Override
     public boolean equals(Object obj){
         Appointment a = (Appointment) obj;
-        if (this.getDate() != a.getDate())
-            return false;
-        if (this.getApp_hour() != a.getApp_hour())
-            return false;
-        if (this.getPatient() != a.getPatient())
-            return false;
-        if (this.getDoctor() != a.getDoctor())
-            return false;
-        return true;
+        //if (obj == null)
+        //    return false;
+        return (this.getDate().equals(a.getDate())) && (this.getApp_hour().equals(a.getApp_hour()));
+        //if (this.getPatient() != a.getPatient())
+        //    return false;
+        //if (this.getDoctor() != a.getDoctor())
+        //    return false;
     }
 
 }

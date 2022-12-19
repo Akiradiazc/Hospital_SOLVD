@@ -98,12 +98,16 @@ public class Hospital {
     }
 
     public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException {
-        for(Appointment item: appointments){
-            if(appointment.equals(item)){
-                LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
-                throw new DoctorSlotOccupiedException("F");
-            } else {
-                appointments.add(appointment);
+        if (appointments.isEmpty()){
+            appointments.add(appointment);
+        } else {
+            for(int i = 0; i<appointments.size(); i++){
+                if(appointment.equals(appointments.get(i))){
+                    LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
+                    throw new DoctorSlotOccupiedException("F");
+                } else {
+                    appointments.add(appointment);
+                }
             }
         }
     }

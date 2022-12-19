@@ -40,8 +40,8 @@ public class MainClass {
         ArrayList<Speciality> SpecialitiesList = new ArrayList<>();
         Hospital1.setSpecialities(SpecialitiesList);
 
-        ArrayList<Appointment> Appointments = new ArrayList<>();
-        Hospital1.setAppointments(Appointments);
+        ArrayList<Appointment> AppointmentsList = new ArrayList<>();
+        Hospital1.setAppointments(AppointmentsList);
 
         Logger.info("Adding Specialities to Hospital");
 
@@ -175,7 +175,7 @@ public class MainClass {
 
         // Adding the appointment of patient1 to hospital's
 
-        Hospital1.setAppointmentInDocsList(Appointments, appointment1);
+        Hospital1.setAppointmentInDocsList(AppointmentsList, appointment1);
         //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment1);
         //Hospital1.setAppointmentPatientsList(AppoPatient, appointment1,patient1, doctor1);
 
@@ -191,14 +191,16 @@ public class MainClass {
 
         // Adding the appointment of patient2 to hospital's
 
-        Hospital1.setAppointmentInDocsList(Appointments, appointment2);
+        Hospital1.setAppointmentInDocsList(AppointmentsList, appointment2);
 
         //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment2);
         //Hospital1.setAppointmentPatientsList(AppoPatient, appointment2,patient2, doctor1);
 
-        Logger.info(appointment2.hashCode_wDoc());
-        Logger.info(appointment1.hashCode_wDoc());
+
         Logger.info(Hospital1.getAppointments());
+
+        Logger.info(appointment1.getApp_hour().toString());
+
     }
 
 }

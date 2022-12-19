@@ -1,5 +1,7 @@
 package Hospital_package;
 
+import java.util.Objects;
+
 public class Date {
     private int day;
     private int month;
@@ -40,5 +42,19 @@ public class Date {
     @Override
     public String toString() {
         return day + "/" + month + "/" + year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Date date = (Date) o;
+        return (this.getDay() == ((Date) o).getDay() && this.getMonth() == ((Date) o).getMonth() && this.getYear() == ((Date) o).getYear());
+        //return day == date.day && month == date.month && year == date.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(day, month, year);
     }
 }

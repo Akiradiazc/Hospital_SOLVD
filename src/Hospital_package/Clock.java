@@ -1,5 +1,7 @@
 package Hospital_package;
 
+import java.util.Objects;
+
 public class Clock {
     private int hr;
     private int min;
@@ -34,9 +36,6 @@ public class Clock {
     public int getMin() {
         return min;
     }
-    public void print() {
-        System.out.println(hr + ":" + min);
-    }
     public String toString() {
         String ent_hour, ent_min, out_hour, out_min;
 
@@ -55,5 +54,19 @@ public class Clock {
         }
 
         return ent_hour + ":" + ent_min;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clock clock = (Clock) o;
+        return (this.getHr()==((Clock) o).getHr() && this.getMin()==((Clock) o).getMin());
+        //return hr == clock.hr && min == clock.min;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hr, min);
     }
 }
