@@ -49,8 +49,7 @@ public class Date {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Date date = (Date) o;
-        return (this.getDay() == ((Date) o).getDay() && this.getMonth() == ((Date) o).getMonth() && this.getYear() == ((Date) o).getYear());
-        //return day == date.day && month == date.month && year == date.year;
+        return day == date.day && month == date.month && year == date.year;
     }
 
     @Override

@@ -68,27 +68,23 @@ public class Appointment {
 
     /*
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Appointment other = (Appointment) obj;
-        return this.getDate().equals(other.getDate());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Appointment that = (Appointment) o;
+        return doctor.equals(that.doctor) && date.equals(that.date) && app_hour.equals(that.app_hour);
     }
 */
-    @Override
-    public boolean equals(Object obj){
-        Appointment a = (Appointment) obj;
-        //if (obj == null)
-        //    return false;
-        return (this.getDate().equals(a.getDate())) && (this.getApp_hour().equals(a.getApp_hour()));
-        //if (this.getPatient() != a.getPatient())
-        //    return false;
-        //if (this.getDoctor() != a.getDoctor())
-        //    return false;
+    public int AppEquEval(Appointment o){
+        if (patient.equals(o.patient) && doctor.equals(o.doctor) && date.equals(o.date) && app_hour.equals(o.app_hour)) return 1;
+        if (getClass() != o.getClass()) return 2;
+        if (doctor.equals(o.doctor) && date.equals(o.date) && app_hour.equals(o.app_hour)) return 3;
+        if (patient.equals(o.patient) &&  date.equals(o.date) && app_hour.equals(o.app_hour)) return 4;
+        return 0;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(doctor, patient, date, app_hour);
+    }
 }

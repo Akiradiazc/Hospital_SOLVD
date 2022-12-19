@@ -4,17 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-import ModelExceptions.BelowZeroException;
-import ModelExceptions.DoctorSlotOccupiedException;
-import ModelExceptions.NoMatchException;
-import ModelExceptions.PatientScheduledException;
+import ModelExceptions.*;
 import org.apache.logging.log4j.*;
 
 public class MainClass {
 
     private final static Logger Logger = LogManager.getLogger(MainClass.class.getName());
 
-    public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException {
+    public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException {
 
        HashMap<Integer, Doctor> AppoDoctor = new HashMap<>();
        HashMap<Integer, Patient>AppoPatient = new HashMap<>();
@@ -187,7 +184,7 @@ public class MainClass {
         appointment2.setDate(new Date(10, 10, 2010));
         appointment2.setApp_hour(new Clock(13, 30));
         appointment2.setPatient(patient2);
-        appointment2.setDoctor(doctor1);
+        appointment2.setDoctor(doctor2);
 
         // Adding the appointment of patient2 to hospital's
 
@@ -198,8 +195,6 @@ public class MainClass {
 
 
         Logger.info(Hospital1.getAppointments());
-
-        Logger.info(appointment1.getApp_hour().toString());
 
     }
 

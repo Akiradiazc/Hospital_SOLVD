@@ -1,11 +1,10 @@
 package Hospital_package;
 
+import ModelExceptions.AppointmentScheduledException;
 import ModelExceptions.BelowZeroException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import ModelExceptions.DoctorSlotOccupiedException;
 import ModelExceptions.PatientScheduledException;
@@ -97,16 +96,28 @@ public class Hospital {
         Appointments = appointments;
     }
 
-    public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException {
+    public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException {
         if (appointments.isEmpty()){
             appointments.add(appointment);
         } else {
-            for(int i = 0; i<appointments.size(); i++){
-                if(appointment.equals(appointments.get(i))){
+            for(Appointment item: appointments){
+                if(appointment.AppEquEval(item)==1){
+                    LoggerBZE_Hospital.error("The appointment has already been scheduled");
+                    throw new AppointmentScheduledException("Appointment duplicated");
+                }
+                else if(appointment.AppEquEval(item)==2){
+                    LoggerBZE_Hospital.error("Supreme error call IT");
+                }
+                else if(appointment.AppEquEval(item)==3){
                     LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
-                    throw new DoctorSlotOccupiedException("F");
+                    throw new DoctorSlotOccupiedException("Doctor Not Available");
+                }
+                else if(appointment.AppEquEval(item)==4){
+                    LoggerBZE_Hospital.error("Patient already has an appointment at that time. Select a different one");
+                    throw new PatientScheduledException("Patient Not Available");
                 } else {
                     appointments.add(appointment);
+                    break;
                 }
             }
         }

@@ -79,21 +79,15 @@ public class Doctor extends HealthcarePerson implements PrescriptionGeneratable,
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(Specialization, getName(), getID());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Doctor doctor = (Doctor) o;
+        return this.getName().equals(((Doctor) o).getName()) && this.getSpecialization().equals(((Doctor) o).getSpecialization());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Doctor other = (Doctor) obj;
-        return Objects.equals(Specialization, other.Specialization) && getName().equals(other.getName());
+    public int hashCode() {
+        return Objects.hash(this.getName(), Specialization);
     }
-
-
 }

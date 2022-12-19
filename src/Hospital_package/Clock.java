@@ -61,8 +61,7 @@ public class Clock {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Clock clock = (Clock) o;
-        return (this.getHr()==((Clock) o).getHr() && this.getMin()==((Clock) o).getMin());
-        //return hr == clock.hr && min == clock.min;
+        return hr == clock.hr && min == clock.min;
     }
 
     @Override
