@@ -13,7 +13,7 @@ public class MainClass {
 
     public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException {
 
-       HashMap<Integer, Doctor> AppoDoctor = new HashMap<>();
+       HashMap<Patient, Appointment> DoctorsAppointments = new HashMap<>();
        HashMap<Integer, Patient>AppoPatient = new HashMap<>();
 
         // System introduction
@@ -156,8 +156,21 @@ public class MainClass {
         Logger.info("Patient has been created with the following info...");
         Logger.info(patient2);
 
+        // Creating a new Patient 3
+
+        Logger.info("Creating a new patient");
+
+        Patient patient3 = new Patient();
+        patient3.setName("Lebron James");
+        patient3.setID(202);
+        patient3.setGender('M');
+        patient3.setDOB(new Date(30, 12, 1984));
+        patient3.setDisease("Old");
+
+        Logger.info("Patient has been created with the following info...");
+        Logger.info(patient3);
+
         // Setting the appointments hashmaps
-        Hospital1.setAppoDoctor(AppoDoctor);
         Hospital1.setAppoPatient(AppoPatient);
 
         // Creating an appointment for patient1
@@ -173,8 +186,6 @@ public class MainClass {
         // Adding the appointment of patient1 to hospital's
 
         Hospital1.setAppointmentInDocsList(AppointmentsList, appointment1);
-        //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment1);
-        //Hospital1.setAppointmentPatientsList(AppoPatient, appointment1,patient1, doctor1);
 
         // Creating an appointment for patient2
 
@@ -182,19 +193,33 @@ public class MainClass {
 
         Appointment appointment2 = new Appointment();
         appointment2.setDate(new Date(10, 10, 2010));
-        appointment2.setApp_hour(new Clock(13, 30));
+        appointment2.setApp_hour(new Clock(14, 30));
         appointment2.setPatient(patient2);
-        appointment2.setDoctor(doctor2);
+        appointment2.setDoctor(doctor1);
 
         // Adding the appointment of patient2 to hospital's
 
         Hospital1.setAppointmentInDocsList(AppointmentsList, appointment2);
 
-        //Hospital1.setAppointmentInDocsList(AppoDoctor, appointment2);
-        //Hospital1.setAppointmentPatientsList(AppoPatient, appointment2,patient2, doctor1);
+     // Creating an appointment for patient2
 
+     Logger.info("Creating an appointment for patient");
 
-        Logger.info(Hospital1.getAppointments());
+     Appointment appointment3 = new Appointment();
+     appointment3.setDate(new Date(11, 12, 2010));
+     appointment3.setApp_hour(new Clock(8, 30));
+     appointment3.setPatient(patient3);
+     appointment3.setDoctor(doctor2);
+
+     // Adding the appointment of patient3 to hospital's
+
+     Hospital1.setAppointmentInDocsList(AppointmentsList, appointment3);
+
+     Logger.info(Hospital1.getAppointments());
+
+     Hospital1.showDoctorsAppointments(AppointmentsList, doctor1);
+     Hospital1.showDoctorsAppointments(AppointmentsList, doctor2);
+
 
     }
 

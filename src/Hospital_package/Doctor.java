@@ -2,6 +2,9 @@ package Hospital_package;
 
 import Interfaces.ExaminationTestGeneratable;
 import Interfaces.PrescriptionGeneratable;
+
+import javax.print.Doc;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Doctor extends HealthcarePerson implements PrescriptionGeneratable, ExaminationTestGeneratable{
@@ -10,7 +13,7 @@ public class Doctor extends HealthcarePerson implements PrescriptionGeneratable,
 
     public Doctor(){}
 
-    public Doctor(String name, int ID, String Specialization) {
+    public Doctor(String name, int ID, String Specialization, HashMap<Patient, Appointment> DocsAppo) {
         super(name, ID);
         this.Specialization = Specialization;
     }

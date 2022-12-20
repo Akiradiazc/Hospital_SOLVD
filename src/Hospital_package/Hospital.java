@@ -2,25 +2,24 @@ package Hospital_package;
 
 import ModelExceptions.AppointmentScheduledException;
 import ModelExceptions.BelowZeroException;
+import ModelExceptions.DoctorSlotOccupiedException;
+import ModelExceptions.PatientScheduledException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ModelExceptions.DoctorSlotOccupiedException;
-import ModelExceptions.PatientScheduledException;
 import org.apache.logging.log4j.*;
 
 public class Hospital {
     private String Hospital_name;
     private int Capacity;
-    private boolean Appointment_dr_available = false;
     private ArrayList<Appointment> Appointments;
     private ArrayList<Speciality> Specialities;
+    private HashMap<Integer, Patient> PatientsAppointments = new HashMap<>();
+    private HashMap<String, String>DoctorsAppointments = new HashMap<>();
 
-    private HashMap<Integer, Doctor> AppoDoctor = new HashMap<>();
-    private HashMap<Integer, Patient>AppoPatient = new HashMap<>();
 
-    private final static Logger LoggerBZE_Hospital = LogManager.getLogger(MainClass.class.getName());
+    private final static Logger Logger_Hospital = LogManager.getLogger(MainClass.class.getName());
 
     public Hospital(){}
 
@@ -47,7 +46,7 @@ public class Hospital {
         if (capacity > 0){
             Capacity = capacity;
         } else {
-            LoggerBZE_Hospital.error("Hospital capacity was set with a number less than zero");
+            Logger_Hospital.error("Hospital capacity was set with a number less than zero");
             throw new BelowZeroException("F");
         }
         /*
@@ -71,21 +70,12 @@ public class Hospital {
     public void setSpecialities(ArrayList<Speciality> specialities) {
         Specialities = specialities;
     }
-
-    public HashMap<Integer, Doctor> getAppoDoctor() {
-        return AppoDoctor;
-    }
-
-    public void setAppoDoctor(HashMap<Integer, Doctor> appoDoctor) {
-        AppoDoctor = appoDoctor;
-    }
-
     public HashMap<Integer, Patient> getAppoPatient() {
-        return AppoPatient;
+        return PatientsAppointments;
     }
 
     public void setAppoPatient(HashMap<Integer, Patient> appoPatient) {
-        AppoPatient = appoPatient;
+        PatientsAppointments = appoPatient;
     }
 
     public ArrayList<Appointment> getAppointments() {
@@ -102,18 +92,18 @@ public class Hospital {
         } else {
             for(Appointment item: appointments){
                 if(appointment.AppEquEval(item)==1){
-                    LoggerBZE_Hospital.error("The appointment has already been scheduled");
+                    Logger_Hospital.error("The appointment has already been scheduled");
                     throw new AppointmentScheduledException("Appointment duplicated");
                 }
                 else if(appointment.AppEquEval(item)==2){
-                    LoggerBZE_Hospital.error("Supreme error call IT");
+                    Logger_Hospital.error("Supreme error call IT");
                 }
                 else if(appointment.AppEquEval(item)==3){
-                    LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
+                    Logger_Hospital.error("The doctor already has an appointment at that time. Select a different one");
                     throw new DoctorSlotOccupiedException("Doctor Not Available");
                 }
                 else if(appointment.AppEquEval(item)==4){
-                    LoggerBZE_Hospital.error("Patient already has an appointment at that time. Select a different one");
+                    Logger_Hospital.error("Patient already has an appointment at that time. Select a different one");
                     throw new PatientScheduledException("Patient Not Available");
                 } else {
                     appointments.add(appointment);
@@ -123,25 +113,20 @@ public class Hospital {
         }
     }
 
-/*
-    public void setAppointmentInDocsList(HashMap<Integer, Doctor> AppoDoctor, Appointment appointment) throws DoctorSlotOccupiedException {
-        if ((AppoDoctor.containsValue(appointment.hashCode_wDoc())) ){
-            LoggerBZE_Hospital.error("The doctor already has an appointment at that time. Select a different one");
-            throw new DoctorSlotOccupiedException("F");
-        } else {
-            Appointment_dr_available = true;
+    public void showDoctorsAppointments(ArrayList<Appointment> appointments, Doctor doctor){
+        DoctorsAppointments.clear();
+        for(Appointment item: appointments){
+            if(item.getDoctor().equals(doctor)){
+                DoctorsAppointments.put(item.getPatient().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
+            }
+        }
+        Logger_Hospital.info("...");
+        Logger_Hospital.info("Showing the appointments scheduled for doctor "+doctor.getName() +":");
+        for(String key: DoctorsAppointments.keySet()){
+            Logger_Hospital.info("Patient: "+key+" Date: "+DoctorsAppointments.get(key));
         }
     }
-    public void setAppointmentPatientsList(HashMap<Integer, Patient>AppoPatient, Appointment appointment, Patient patient, Doctor doctor) throws PatientScheduledException{
-        if ((AppoPatient.containsValue(appointment.hashCode_wPat()))){
-            LoggerBZE_Hospital.error("Patient already has an appointment at the same time. Select a different one ");
-            throw new PatientScheduledException("F");
-        } else if (Appointment_dr_available==true){
-            AppoDoctor.put(appointment.hashCode_wDoc(), doctor);
-            AppoPatient.put(appointment.hashCode_wPat(), patient);
-        }
-    }
-*/
+
     @Override
     public String toString() {
         return "\nHospital Data" + '\n'
