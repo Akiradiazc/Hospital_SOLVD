@@ -58,23 +58,7 @@ public class Appointment {
                 "Date of the appointment: " + date + "\n" +
                 "Hour of the: " + app_hour;
     }
-    public int hashCode_wDoc(){
-        return Objects.hash(date, app_hour, doctor);
-    }
 
-    public int hashCode_wPat(){
-        return Objects.hash(date, app_hour, patient);
-    }
-
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Appointment that = (Appointment) o;
-        return doctor.equals(that.doctor) && date.equals(that.date) && app_hour.equals(that.app_hour);
-    }
-*/
     public int AppEquEval(Appointment o){
         if (patient.equals(o.patient) && doctor.equals(o.doctor) && date.equals(o.date) && app_hour.equals(o.app_hour)) return 1;
         if (getClass() != o.getClass()) return 2;

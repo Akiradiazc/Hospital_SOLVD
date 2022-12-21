@@ -15,7 +15,7 @@ public class Hospital {
     private int Capacity;
     private ArrayList<Appointment> Appointments;
     private ArrayList<Speciality> Specialities;
-    private HashMap<Integer, Patient> PatientsAppointments = new HashMap<>();
+    private HashMap<String, String> PatientsAppointments = new HashMap<>();
     private HashMap<String, String>DoctorsAppointments = new HashMap<>();
 
 
@@ -49,7 +49,7 @@ public class Hospital {
             Logger_Hospital.error("Hospital capacity was set with a number less than zero");
             throw new BelowZeroException("F");
         }
-        /*
+/*
         try{
             if (capacity > 0){
                 Capacity = capacity;
@@ -57,10 +57,10 @@ public class Hospital {
                 throw new BelowZeroException();
             }
         } catch (BelowZeroException BZE){
-            LoggerBZE_Hospital.error(BZE.getCause());
-            LoggerBZE_Hospital.error("Hospital capacity was set with a number less than zero");
+            Logger_Hospital.error(BZE.getCause());
+            Logger_Hospital.error("Hospital capacity was set with a number less than zero");
         }
-         */
+*/
     }
 
     public ArrayList<Speciality> getSpecialities() {
@@ -70,14 +70,15 @@ public class Hospital {
     public void setSpecialities(ArrayList<Speciality> specialities) {
         Specialities = specialities;
     }
-    public HashMap<Integer, Patient> getAppoPatient() {
+    /*
+    public HashMap<String, String> getAppoPatient() {
         return PatientsAppointments;
     }
 
-    public void setAppoPatient(HashMap<Integer, Patient> appoPatient) {
+    public void setAppoPatient(HashMap<String, String> appoPatient) {
         PatientsAppointments = appoPatient;
     }
-
+*/
     public ArrayList<Appointment> getAppointments() {
         return Appointments;
     }
@@ -112,7 +113,7 @@ public class Hospital {
             }
         }
     }
-
+/*
     public void showDoctorsAppointments(ArrayList<Appointment> appointments, Doctor doctor){
         DoctorsAppointments.clear();
         for(Appointment item: appointments){
@@ -126,7 +127,20 @@ public class Hospital {
             Logger_Hospital.info("Patient: "+key+" Date: "+DoctorsAppointments.get(key));
         }
     }
-
+    public void showPatientsAppointments(ArrayList<Appointment> appointments, Patient patient){
+        PatientsAppointments.clear();
+        for(Appointment item: appointments){
+            if(item.getPatient().equals(patient)){
+                PatientsAppointments.put(item.getDoctor().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
+            }
+        }
+        Logger_Hospital.info("...");
+        Logger_Hospital.info("Showing the future appointments scheduled for patient " +patient.getName()+ ":");
+        for(String key: PatientsAppointments.keySet()){
+            Logger_Hospital.info("Doctor: "+key+ "Date: "+PatientsAppointments.get(key));
+        }
+    }
+*/
     @Override
     public String toString() {
         return "\nHospital Data" + '\n'
