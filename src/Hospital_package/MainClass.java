@@ -56,8 +56,8 @@ public class MainClass {
         Logger.info("Creating doctors to add to the Specialities departments");
 
         Doctor doctor1 = new Doctor();
-        doctor1.setEnt_hour(new Clock(07, 00));
-        doctor1.setOut_hour(new Clock(15, 00));
+        doctor1.setEnt_hour(new Clock(7, 0));
+        doctor1.setOut_hour(new Clock(15, 0));
         doctor1.setPhoneNum("6673035273");
         doctor1.setName("Stephen Strange");
         doctor1.setID(100);
@@ -68,8 +68,8 @@ public class MainClass {
         Logger.info(doctor1);
 
         Doctor doctor2 = new Doctor();
-        doctor2.setEnt_hour(new Clock(07, 00));
-        doctor2.setOut_hour(new Clock(15, 00));
+        doctor2.setEnt_hour(new Clock(7, 0));
+        doctor2.setOut_hour(new Clock(15, 0));
         doctor2.setPhoneNum("6671234568");
         doctor2.setName("Schwartz");
         doctor2.setID(101);
@@ -80,8 +80,8 @@ public class MainClass {
         Logger.info(doctor2);
 
         Doctor doctor3 = new Doctor();
-        doctor3.setEnt_hour(new Clock(07, 00));
-        doctor3.setOut_hour(new Clock(15, 00));
+        doctor3.setEnt_hour(new Clock(7, 0));
+        doctor3.setOut_hour(new Clock(15, 0));
         doctor3.setPhoneNum("6671234561");
         doctor3.setName("Schmidt");
         doctor3.setID(102);
@@ -92,8 +92,8 @@ public class MainClass {
         Logger.info(doctor3);
 
         Doctor doctor4 = new Doctor();
-        doctor4.setEnt_hour(new Clock(07, 00));
-        doctor4.setOut_hour(new Clock(15, 00));
+        doctor4.setEnt_hour(new Clock(7, 0));
+        doctor4.setOut_hour(new Clock(15, 0));
         doctor4.setPhoneNum("6671234562");
         doctor4.setName("Messi");
         doctor4.setID(103);

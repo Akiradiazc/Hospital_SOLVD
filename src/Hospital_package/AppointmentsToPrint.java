@@ -4,7 +4,6 @@ import Interfaces.AppointmentPrintable;
 import ModelExceptions.AppointmentPrintPersonException;
 import org.apache.logging.log4j.*;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.HashMap;
 
