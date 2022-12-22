@@ -17,6 +17,8 @@ public class AppointmentsToPrint<T extends Person,A extends ArrayList<Appointmen
     private HashMap<String, String> PatientsAppointments = new HashMap<>();
     private HashMap<String, String>DoctorsAppointments = new HashMap<>();
 
+    AppointmentsToPrint(){}
+
     AppointmentsToPrint(T person, A AppointmentList){
         this.person = person;
         this.AppointmentList = AppointmentList;
@@ -45,7 +47,7 @@ public class AppointmentsToPrint<T extends Person,A extends ArrayList<Appointmen
                 }
             }
             Logger_AppPrint.info("...");
-            Logger_AppPrint.info("Showing the future appointments scheduled for patient " +person.getName()+ ":");
+            Logger_AppPrint.info("Showing the appointments scheduled for patient " +person.getName()+ ":");
             for(String key: PatientsAppointments.keySet()){
                 Logger_AppPrint.info("Doctor: "+key+ "Date: "+PatientsAppointments.get(key));
             }
@@ -56,7 +58,21 @@ public class AppointmentsToPrint<T extends Person,A extends ArrayList<Appointmen
             throw new AppointmentPrintPersonException("F. Person class not allowed");
 
         }
-
     }
 
+    public T getPerson() {
+        return person;
+    }
+
+    public void setPerson(T person) {
+        this.person = person;
+    }
+
+    public A getAppointmentList() {
+        return AppointmentList;
+    }
+
+    public void setAppointmentList(A appointmentList) {
+        AppointmentList = appointmentList;
+    }
 }

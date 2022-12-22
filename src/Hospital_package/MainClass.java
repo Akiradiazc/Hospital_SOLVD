@@ -1,9 +1,6 @@
 package Hospital_package;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-
 import ModelExceptions.*;
 import org.apache.logging.log4j.*;
 
@@ -12,9 +9,6 @@ public class MainClass {
     private final static Logger Logger = LogManager.getLogger(MainClass.class.getName());
 
     public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException, AppointmentPrintPersonException {
-
-       HashMap<Patient, Appointment> DoctorsAppointments = new HashMap<>();
-       HashMap<Integer, Patient>AppoPatient = new HashMap<>();
 
         // System introduction
 
@@ -214,12 +208,12 @@ public class MainClass {
         Hospital1.setAppointmentInDocsList(AppointmentsList, appointment3);
 
         Logger.info(Hospital1.getAppointments());
-/*
-        Hospital1.showDoctorsAppointments(AppointmentsList, doctor1);
-        Hospital1.showDoctorsAppointments(AppointmentsList, doctor2);
-*/
-        AppointmentsToPrint<Doctor, ArrayList<Appointment>> DoctorPrinter1 = new AppointmentsToPrint<>(doctor1, AppointmentsList);
-        DoctorPrinter1.PrintAppointment(doctor1, AppointmentsList);
+
+        AppointmentsToPrint<Doctor, ArrayList<Appointment>> DoctorPrinter = new AppointmentsToPrint<>();
+        AppointmentsToPrint<Patient, ArrayList<Appointment>> PatientPrinter = new AppointmentsToPrint<>();
+        DoctorPrinter.PrintAppointment(doctor1, AppointmentsList);
+        PatientPrinter.PrintAppointment(patient2, AppointmentsList);
+
     }
 
 }
