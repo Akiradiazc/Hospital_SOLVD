@@ -19,4 +19,7 @@ public enum AppointmentsPrices {
         this.AppointmentPrice = AppointmentPrice;
     }
 
+    public int getAppointmentPrice() {
+        return AppointmentPrice;
+    }
 }

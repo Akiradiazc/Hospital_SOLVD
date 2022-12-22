@@ -48,7 +48,7 @@ public class AppointmentsToPrint<T extends Person,A extends ArrayList<Appointmen
             Logger_AppPrint.info("...");
             Logger_AppPrint.info("Showing the appointments scheduled for patient " +person.getName()+ ":");
             for(String key: PatientsAppointments.keySet()){
-                Logger_AppPrint.info("Doctor: "+key+ "Date: "+PatientsAppointments.get(key));
+                Logger_AppPrint.info("Doctor: "+key+ " Date: "+PatientsAppointments.get(key));
             }
 
         }

@@ -8,7 +8,7 @@ public class MainClass {
 
     private final static Logger Logger = LogManager.getLogger(MainClass.class.getName());
 
-    public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException, AppointmentPrintPersonException {
+    public static void main(String[] args) throws BelowZeroException, NoMatchException, DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException, AppointmentPrintPersonException, PatientNotMatchException {
 
         // System introduction
 
@@ -131,7 +131,7 @@ public class MainClass {
         patient1.setDOB(new Date(27, 2, 1999));
         patient1.setDisease("Broken arm");
 
-        Logger.info("Patient has been created with the following info...");
+        Logger.info("Patient 1 has been created with the following info...");
         Logger.info(patient1);
 
         // Creating a new Patient 2
@@ -145,7 +145,7 @@ public class MainClass {
         patient2.setDOB(new Date(14, 3, 1988));
         patient2.setDisease("Broken shoulder");
 
-        Logger.info("Patient has been created with the following info...");
+        Logger.info("Patient 2 has been created with the following info...");
         Logger.info(patient2);
 
         // Creating a new Patient 3
@@ -159,7 +159,7 @@ public class MainClass {
         patient3.setDOB(new Date(30, 12, 1984));
         patient3.setDisease("Old");
 
-        Logger.info("Patient has been created with the following info...");
+        Logger.info("Patient 3 has been created with the following info...");
         Logger.info(patient3);
 
         // Setting the appointments hashmaps
@@ -167,7 +167,7 @@ public class MainClass {
 
         // Creating an appointment for patient1
 
-        Logger.info("Creating an appointment for patient");
+        Logger.info("Creating an appointment for patient 1");
 
         Appointment appointment1 = new Appointment();
         appointment1.setDate(new Date(10, 10, 2010));
@@ -181,7 +181,7 @@ public class MainClass {
 
         // Creating an appointment for patient2
 
-        Logger.info("Creating an appointment for patient");
+        Logger.info("Creating an appointment for patient 2");
 
         Appointment appointment2 = new Appointment();
         appointment2.setDate(new Date(10, 10, 2010));
@@ -195,7 +195,7 @@ public class MainClass {
 
         // Creating an appointment for patient2
 
-        Logger.info("Creating an appointment for patient");
+        Logger.info("Creating an appointment for patient 3");
 
         Appointment appointment3 = new Appointment();
         appointment3.setDate(new Date(11, 12, 2010));
@@ -207,12 +207,39 @@ public class MainClass {
 
         Hospital1.setAppointmentInDocsList(AppointmentsList, appointment3);
 
-        Logger.info(Hospital1.getAppointments());
-
+        // Creating objects to print the appointments for doctors and patients
         AppointmentsToPrint<Doctor, ArrayList<Appointment>> DoctorPrinter = new AppointmentsToPrint<>();
         AppointmentsToPrint<Patient, ArrayList<Appointment>> PatientPrinter = new AppointmentsToPrint<>();
+
+        //  ---- Logger.info(Hospital1.getAppointments());
+
+        // Printing the appointments for Doctor 1 & 2 and for each Patient
+
+        Logger.info("Showing Doctor 1 appointments");
         DoctorPrinter.PrintAppointment(doctor1, AppointmentsList);
+        Logger.info("Showing Doctor 2 appointments");
+        DoctorPrinter.PrintAppointment(doctor2, AppointmentsList);
+        Logger.info("Showing Patient 1 appointments");
+        PatientPrinter.PrintAppointment(patient1, AppointmentsList);
+        Logger.info("Showing Patient 2 appointments");
         PatientPrinter.PrintAppointment(patient2, AppointmentsList);
+        Logger.info("Showing Patient 3 appointments");
+        PatientPrinter.PrintAppointment(patient3, AppointmentsList);
+
+        // Creating and printing the bill for each patient
+        Logger.info("Printing Patient 1 bill: ");
+        Bill bill1 = new Bill();
+        bill1.setPatient(patient1);
+        bill1.setAppointment(appointment1);
+        bill1.generateBill();
+        Logger.info(bill1);
+
+        Logger.info("Printing Patient 2 bill: ");
+        Bill bill2 = new Bill();
+        bill2.setPatient(patient2);
+        bill2.setAppointment(appointment2);
+        bill2.generateBill();
+        Logger.info(bill2);
 
     }
 
