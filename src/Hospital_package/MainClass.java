@@ -227,6 +227,7 @@ public class MainClass {
         PatientPrinter.PrintAppointment(patient3, AppointmentsList);
 
         // Creating and printing the bill for each patient
+
         Logger.info("Printing Patient 1 bill: ");
         Bill bill1 = new Bill();
         bill1.setPatient(patient1);
@@ -240,6 +241,17 @@ public class MainClass {
         bill2.setAppointment(appointment2);
         bill2.generateBill();
         Logger.info(bill2);
+
+        // Creating a SearchBlock where an admin can search for a patient's appointment's details
+
+        SearchBlock SB1 = new SearchBlock(AppointmentsList);
+        SB1.setListSearchAppointments(AppointmentsList);
+
+
+        SB1.setAppSearchPatient(patient1);
+        SB1.setAppSearchDate(new Date(10,10,2010));
+
+        SB1.showSearchResults();
 
     }
 
