@@ -54,9 +54,10 @@ public class Appointment {
     public String toString() {
         return "\nAppointment details:" + '\n' +
                 "Doctor: " + doctor.getName() + '\n' +
+                "Area: " + doctor.getSpecialization() + "\n"+
                 "Patient: " + patient.getName() + "\n"+
                 "Date of the appointment: " + date + "\n" +
-                "Hour of the: " + app_hour;
+                "Hour of the appointment: " + app_hour;
     }
 
     public int AppEquEval(Appointment o){

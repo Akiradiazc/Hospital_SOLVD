@@ -242,14 +242,18 @@ public class MainClass {
         bill2.generateBill();
         Logger.info(bill2);
 
-        // Creating a SearchBlock where an admin can search for a patient's appointment's details
+        // Creating a SearchBlock where an admin can search for a patient's appointment's details using his/her name and
+        // another parameter (doctor, date, or hour)
+
+        Logger.info("Searching for an appointment from a given Patient and an additional parameter");
 
         SearchBlock SB1 = new SearchBlock(AppointmentsList);
         SB1.setListSearchAppointments(AppointmentsList);
 
-
         SB1.setAppSearchPatient(patient1);
         SB1.setAppSearchDate(new Date(10,10,2010));
+
+        Logger.info("Searching for an appointment of Patient: " + patient1.getName());
 
         SB1.showSearchResults();
 
