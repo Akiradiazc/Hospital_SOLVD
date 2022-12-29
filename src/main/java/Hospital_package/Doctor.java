@@ -93,4 +93,5 @@ public class Doctor extends HealthcarePerson implements PrescriptionGeneratable,
     public int hashCode() {
         return Objects.hash(this.getName(), Specialization);
     }
+
 }
