@@ -19,6 +19,8 @@ Hospital_package\AppointmentsPrices.class
 Interfaces\ExaminationTestGeneratable.class
 Hospital_package\HealthcarePerson.class
 ModelExceptions\AppointmentScheduledException.class
+Hospital_package\AppointmentInListAdder.class
+Hospital_package\AppointmentInListThread.class
 Hospital_package\Doctor.class
 ModelExceptions\PatientNotMatchException.class
 Hospital_package\SearchBlock.class

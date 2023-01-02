@@ -40,7 +40,6 @@ public class Speciality {
             LoggerNME_Speciality.error("Doctor's speciality didn't match to speciality list");
             throw new NoMatchException("F", new RuntimeException());
         }
-
     }
 
     @Override

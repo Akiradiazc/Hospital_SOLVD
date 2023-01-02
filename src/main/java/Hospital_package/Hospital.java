@@ -86,61 +86,61 @@ public class Hospital {
     public void setAppointments(ArrayList<Appointment> appointments) {
         Appointments = appointments;
     }
+    /*
+        public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException {
+            if (appointments.isEmpty()){
+                appointments.add(appointment);
+            } else {
+                for(Appointment item: appointments){
+                    if(appointment.AppEquEval(item)==1){
+                        Logger_Hospital.error("The appointment has already been scheduled");
+                        throw new AppointmentScheduledException("Appointment duplicated");
+                    }
+                    else if(appointment.AppEquEval(item)==2){
+                        Logger_Hospital.error("Supreme error call IT");
+                    }
+                    else if(appointment.AppEquEval(item)==3){
+                        Logger_Hospital.error("The doctor already has an appointment at that time. Select a different one");
+                        throw new DoctorSlotOccupiedException("Doctor Not Available");
+                    }
+                    else if(appointment.AppEquEval(item)==4){
+                        Logger_Hospital.error("Patient already has an appointment at that time. Select a different one");
+                        throw new PatientScheduledException("Patient Not Available");
+                    } else {
+                        appointments.add(appointment);
+                        break;
+                    }
+                }
+            }
+        }
 
-    public void setAppointmentInDocsList(ArrayList<Appointment> appointments, Appointment appointment) throws DoctorSlotOccupiedException, PatientScheduledException, AppointmentScheduledException {
-        if (appointments.isEmpty()){
-            appointments.add(appointment);
-        } else {
+        public void showDoctorsAppointments(ArrayList<Appointment> appointments, Doctor doctor){
+            DoctorsAppointments.clear();
             for(Appointment item: appointments){
-                if(appointment.AppEquEval(item)==1){
-                    Logger_Hospital.error("The appointment has already been scheduled");
-                    throw new AppointmentScheduledException("Appointment duplicated");
-                }
-                else if(appointment.AppEquEval(item)==2){
-                    Logger_Hospital.error("Supreme error call IT");
-                }
-                else if(appointment.AppEquEval(item)==3){
-                    Logger_Hospital.error("The doctor already has an appointment at that time. Select a different one");
-                    throw new DoctorSlotOccupiedException("Doctor Not Available");
-                }
-                else if(appointment.AppEquEval(item)==4){
-                    Logger_Hospital.error("Patient already has an appointment at that time. Select a different one");
-                    throw new PatientScheduledException("Patient Not Available");
-                } else {
-                    appointments.add(appointment);
-                    break;
+                if(item.getDoctor().equals(doctor)){
+                    DoctorsAppointments.put(item.getPatient().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
                 }
             }
-        }
-    }
-/*
-    public void showDoctorsAppointments(ArrayList<Appointment> appointments, Doctor doctor){
-        DoctorsAppointments.clear();
-        for(Appointment item: appointments){
-            if(item.getDoctor().equals(doctor)){
-                DoctorsAppointments.put(item.getPatient().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
+            Logger_Hospital.info("...");
+            Logger_Hospital.info("Showing the appointments scheduled for doctor "+doctor.getName() +":");
+            for(String key: DoctorsAppointments.keySet()){
+                Logger_Hospital.info("Patient: "+key+" Date: "+DoctorsAppointments.get(key));
             }
         }
-        Logger_Hospital.info("...");
-        Logger_Hospital.info("Showing the appointments scheduled for doctor "+doctor.getName() +":");
-        for(String key: DoctorsAppointments.keySet()){
-            Logger_Hospital.info("Patient: "+key+" Date: "+DoctorsAppointments.get(key));
-        }
-    }
-    public void showPatientsAppointments(ArrayList<Appointment> appointments, Patient patient){
-        PatientsAppointments.clear();
-        for(Appointment item: appointments){
-            if(item.getPatient().equals(patient)){
-                PatientsAppointments.put(item.getDoctor().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
+        public void showPatientsAppointments(ArrayList<Appointment> appointments, Patient patient){
+            PatientsAppointments.clear();
+            for(Appointment item: appointments){
+                if(item.getPatient().equals(patient)){
+                    PatientsAppointments.put(item.getDoctor().getName(), (item.getDate().toString()+" @ "+item.getApp_hour().toString()));
+                }
+            }
+            Logger_Hospital.info("...");
+            Logger_Hospital.info("Showing the future appointments scheduled for patient " +patient.getName()+ ":");
+            for(String key: PatientsAppointments.keySet()){
+                Logger_Hospital.info("Doctor: "+key+ "Date: "+PatientsAppointments.get(key));
             }
         }
-        Logger_Hospital.info("...");
-        Logger_Hospital.info("Showing the future appointments scheduled for patient " +patient.getName()+ ":");
-        for(String key: PatientsAppointments.keySet()){
-            Logger_Hospital.info("Doctor: "+key+ "Date: "+PatientsAppointments.get(key));
-        }
-    }
-*/
+    */
     @Override
     public String toString() {
         return "\nHospital Data" + '\n'

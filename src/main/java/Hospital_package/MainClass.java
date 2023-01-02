@@ -103,7 +103,7 @@ public class MainClass {
         Logger.info("New doctor was created with the following info: ");
         Logger.info(doctor4);
 
-        // Doctors added to list
+        //----------------------------Doctors added to list
 
         Radiology.setDoctorInList(doctor1, Radiology, RadiologyDrList);
         Radiology.setDoctorInList(doctor2, Radiology, RadiologyDrList);
@@ -113,14 +113,14 @@ public class MainClass {
 
         Logger.info("Doctors where added to specialities lists");
 
-        // Final info log
+        //---------------------------Final info log
 
         Logger.info("A new Hospital has been created with the following info");
         Logger.info(Hospital1);
 
         Logger.info("\n");
 
-        // Creating a new Patient
+        //---------------------------Creating a new Patient
 
         Logger.info("Creating a new patient");
 
@@ -134,7 +134,7 @@ public class MainClass {
         Logger.info("Patient 1 has been created with the following info...");
         Logger.info(patient1);
 
-        // Creating a new Patient 2
+        //---------------------------Creating a new Patient 2
 
         Logger.info("Creating a new patient");
 
@@ -148,7 +148,7 @@ public class MainClass {
         Logger.info("Patient 2 has been created with the following info...");
         Logger.info(patient2);
 
-        // Creating a new Patient 3
+        //----------------------------Creating a new Patient 3
 
         Logger.info("Creating a new patient");
 
@@ -162,10 +162,7 @@ public class MainClass {
         Logger.info("Patient 3 has been created with the following info...");
         Logger.info(patient3);
 
-        // Setting the appointments hashmaps
-//        Hospital1.setAppoPatient(AppoPatient);
-
-        // Creating an appointment for patient1
+        //----------------------------Creating an appointment for patient1
 
         Logger.info("Creating an appointment for patient 1");
 
@@ -175,11 +172,13 @@ public class MainClass {
         appointment1.setPatient(patient1);
         appointment1.setDoctor(doctor1);
 
-        // Adding the appointment of patient1 to hospital's
+        //---------------------------Adding the appointment of patient1 to hospital's
+        AppointmentInListAdder appointmentInListAdder = new AppointmentInListAdder();
+        AppointmentInListThread appointmentThread1 = new AppointmentInListThread(appointmentInListAdder, AppointmentsList, appointment1);
+        appointmentThread1.start();
+        //Hospital1.setAppointmentInDocsList(AppointmentsList, appointment1);
 
-        Hospital1.setAppointmentInDocsList(AppointmentsList, appointment1);
-
-        // Creating an appointment for patient2
+        //---------------------------Creating an appointment for patient2
 
         Logger.info("Creating an appointment for patient 2");
 
@@ -189,11 +188,13 @@ public class MainClass {
         appointment2.setPatient(patient2);
         appointment2.setDoctor(doctor1);
 
-        // Adding the appointment of patient2 to hospital's
+        //--------------------------Adding the appointment of patient2 to hospital's
+        AppointmentInListThread appointmentThread2 = new AppointmentInListThread(appointmentInListAdder, AppointmentsList, appointment2);
+        appointmentThread2.start();
 
-        Hospital1.setAppointmentInDocsList(AppointmentsList, appointment2);
+        //Hospital1.setAppointmentInDocsList(AppointmentsList, appointment2);
 
-        // Creating an appointment for patient2
+        //--------------------------Creating an appointment for patient2
 
         Logger.info("Creating an appointment for patient 3");
 
@@ -203,17 +204,19 @@ public class MainClass {
         appointment3.setPatient(patient3);
         appointment3.setDoctor(doctor2);
 
-        // Adding the appointment of patient3 to hospital's
+        //-------------------------Adding the appointment of patient3 to hospital's
+        AppointmentInListThread appointmentThread3 = new AppointmentInListThread(appointmentInListAdder, AppointmentsList, appointment3);
+        appointmentThread3.start();
 
-        Hospital1.setAppointmentInDocsList(AppointmentsList, appointment3);
+        //Hospital1.setAppointmentInDocsList(AppointmentsList, appointment3);
 
-        // Creating objects to print the appointments for doctors and patients
+        //-------------------------Creating objects to print the appointments for doctors and patients
         AppointmentsToPrint<Doctor, ArrayList<Appointment>> DoctorPrinter = new AppointmentsToPrint<>();
         AppointmentsToPrint<Patient, ArrayList<Appointment>> PatientPrinter = new AppointmentsToPrint<>();
 
         //  ---- Logger.info(Hospital1.getAppointments());
 
-        // Printing the appointments for Doctor 1 & 2 and for each Patient
+        //-------------------------Printing the appointments for Doctor 1 & 2 and for each Patient
 
         Logger.info("Showing Doctor 1 appointments");
         DoctorPrinter.PrintAppointment(doctor1, AppointmentsList);
@@ -226,7 +229,7 @@ public class MainClass {
         Logger.info("Showing Patient 3 appointments");
         PatientPrinter.PrintAppointment(patient3, AppointmentsList);
 
-        // Creating and printing the bill for each patient
+        //---------------------------Creating and printing the bill for each patient
 
         Logger.info("Printing Patient 1 bill: ");
         Bill bill1 = new Bill();
@@ -242,8 +245,8 @@ public class MainClass {
         bill2.generateBill();
         Logger.info(bill2);
 
-        // Creating a SearchBlock where an admin can search for a patient's appointment's details using his/her name and
-        // another parameter (doctor, date, or hour)
+        //--------------------------Creating a SearchBlock where an admin can search for a patient's appointment's details using his/her name and
+        //--------------------------another parameter (doctor, date, or hour)
 
         Logger.info("Searching for an appointment from a given Patient and an additional parameter");
 
