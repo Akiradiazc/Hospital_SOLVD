@@ -1,8 +1,10 @@
 Interfaces\PrescriptionGeneratable.class
+ConnectionPoolPackage\PoolThread.class
 Hospital_package\Medication.class
 Interfaces\AppointmentPrintable.class
 ModelExceptions\NoMatchException.class
 Hospital_package\Receptionist.class
+ConnectionPoolPackage\ConnectionPool.class
 Hospital_package\MainClass.class
 Hospital_package\Patient.class
 ModelExceptions\DoctorSlotOccupiedException.class
@@ -26,4 +28,5 @@ ModelExceptions\PatientNotMatchException.class
 Hospital_package\SearchBlock.class
 Hospital_package\Student.class
 Hospital_package\Speciality.class
+ConnectionPoolPackage\CustomConnection.class
 Hospital_package\Person.class

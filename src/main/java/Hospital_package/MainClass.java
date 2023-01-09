@@ -1,6 +1,9 @@
 package Hospital_package;
 
 import java.util.ArrayList;
+
+import ConnectionPoolPackage.ConnectionPool;
+import ConnectionPoolPackage.PoolThread;
 import ModelExceptions.*;
 import org.apache.logging.log4j.*;
 
@@ -260,6 +263,37 @@ public class MainClass {
 
         SB1.showSearchResults();
 
+        //--------------------------Testing a connection pool
+
+        ConnectionPool connectionPool = ConnectionPool.newInstance();
+        Logger.info("Testing pool connection threads");
+        PoolThread poolThread1 = new PoolThread();
+        PoolThread poolThread2 = new PoolThread();
+        PoolThread poolThread3 = new PoolThread();
+        PoolThread poolThread4 = new PoolThread();
+        PoolThread poolThread5 = new PoolThread();
+        PoolThread poolThread6 = new PoolThread();
+        PoolThread poolThread7 = new PoolThread();
+
+        poolThread1.start();
+        poolThread2.start();
+        poolThread3.start();
+        poolThread4.start();
+        poolThread5.start();
+        poolThread6.start();
+        poolThread7.start();
+
+        try {
+            poolThread1.join();
+            poolThread2.join();
+            poolThread3.join();
+            poolThread4.join();
+            poolThread5.join();
+            poolThread6.join();
+            poolThread7.join();
+        } catch(InterruptedException ignored){
+        }
+        connectionPool.getConnection();
     }
 
 }
